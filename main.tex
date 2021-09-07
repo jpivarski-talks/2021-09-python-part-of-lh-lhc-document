@@ -146,6 +146,8 @@ ROOT has offered JIT-compilation of C++ for a long time as Cling (replacing its 
 
 However, Cling's JIT-compilation facility is currently maintained as part of the ROOT project, when it should be upstreamed to LLVM as part of Clang. Princeton's Compiler-as-a-Service (CaaS) project is working on integrating Cling's LLVM patches into the main LLVM project, where they can be maintained by the larger community. The same project is also making PyROOT/Cppyy's dynamic language bindings, currently unique to HEP, into a standalone project that can be adopted by data scientists beyond HEP.
 
+In principle, the Julia language would be ideal for HEP, as it combines Python's dynamism with C++'s speed by JIT-compiling every expression in the language. Whereas Numba can only JIT-compile a subset of Python and both Python and C++ struggle with adding autodifferentiation (using JAX in Python and CaaS's Clad in C++), this is a built-in feature of Julia. Julia lacks the large community of both Python and C++, though Python and C++ interoperability is very active in the Julia community. Small groups of physicists have been investigating Julia for years---it could develop into a third HEP language on the HL-LHC's timescale.
+
 \subsection{Histogramming}
 
 
