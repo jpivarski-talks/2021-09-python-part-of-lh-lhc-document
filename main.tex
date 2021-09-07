@@ -92,6 +92,35 @@ Clearly, HEP analysis culture is in the midst of a transition, perhaps as signif
 
 \section{The future of HEP analysis tools}
 
+The previous section describes the past and present of HEP (and particle physics) software. It would be dangerous to extrapolate through the trends: for instance, Figures~\ref{fig:lhlhc-github-languages-paper}--\ref{fig:lhlhc-familiarity-with-packages-paper} indicate that Python and Pythonic data analysis tools (NumPy, Matplotlib, and Pandas) were not widely used in HEP 5~years ago, but now they are as widely used as C++ and ROOT. That does not mean, however, that the trend will continue to rise: there are good reasons to believe that it will level out, with physicists using Python as an interface and C++ for performance and accelerator access (e.g.\ GPUs), freely mixing HEP-specific ROOT routines with machine learning, distributed schedulers, visualization, and other general-purpose tools from the data science world.
+
+This ``mixed future'' is a safe bet because it is how most other scientific fields that adopted Python earlier than HEP operate. AstroPy (2011) is a Pythonic hub for astronomy, but it wraps older C libraries such as WCSLIB, FITS, and HDF5. Geospatial analysis uses a variety of Python tools, but it is largely based on GDAL (2000) and CGAL (1996), both written in C++. Scikit-Learn (2007) and SciPy itself (2001) are primarily wrappers of legacy C and Fortran routines. Unlike Java, Python mixes well with C++, owing to a single, prominent implementation target (CPython) that shares a memory heap with libc/malloc, a well-documented C API, and active C++ binding projects---Cython and pybind11.
+
+\subsection{File formats}
+
+File formats tend to be conservative. The following widely used formats for the sciences are decades old:
+
+\begin{itemize}
+\item generic: JSON (2002), XML (1998), XLS (1997), HDF5 (1992), NetCDF (1990), CSV (1972)
+\item astronomy: VOTable (2002), FITS (1981)
+\item geospatial: GeoTIFF (1994), Shapefiles (1990)
+\item genetics: FASTA (1985)
+\item chemistry: ChemML (1999), GROMACS (1991), CHARMM (1983), PDB (1976)
+\end{itemize}
+
+We can therefore expect ROOT files to continue playing a major role in HEP. However, this is only half of the story: interoperability is a key value in the culture of data science software development. With sufficient interoperability, data file formats do not dictate which tools can be used to analyze them. Astronomers, for instance, routinely copy FITS telescope images and VOTable legacy data into machine learning libraries on the fly with NumPy or through on-disk HDF5 files. Geneticists and climate scientists are mixing their old software stacks with xarray (2014), a Pandas-like library for larger-than-memory $N$-dimensional tensors, and Zarr (2015), an array format described as ``cloud-ready NetCDF.''
+
+For many years, ROOT TTrees had been unique in their ability to efficiently store (i.e.\ usually columnar) nested, variable-length data structures with an immediate interpretation in C++. Now, Apache Arrow (2016) can efficiently represent (always columnar) nested data structures in memory, in a language-independent and interprocess-sharable way. Moreover, Apache Parquet (2013) can efficiently store (always columnar) these language-independent, nested data structures on disk. As non-domain-specific formats, Arrow and Parquet are recognized across scientific fields and are supported by interdisciplinary libraries like Pandas, Scikit-Learn, and TensorFlow. ALICE's O2 analysis framework uses Arrow as its primary data model for Run~3.
+
+But that doesn't mean that HEP should ``switch'' from ROOT to Parquet. It means that data analysts will want to mix ROOT, Arrow, Parquet, and HDF5 in their analysis workflows, and lightweight software needs to be on hand to accommodate that. Uproot is a Python implementation of ROOT I/O, capable of reading and writing TTree data that are sufficiently independent of C++ that they can even have an Arrow/Parquet interpretation. Using Awkward Array, Uproot can avoid creating Python objects for every entry of a TTree during a conversion, which impacts the conversion rate by a factor of hundreds. Uproot is also fairly well established among HEP physicists (Figures~\ref{fig:lhlhc-github-overlay-lin-paper} and \ref{fig:lhlhc-familiarity-with-packages-paper}).
+
+It is also important to note that ROOT data will not always be TTrees. The ROOT team is developing a replacement for the TTree class called RNTuple, which addresses TTree's shortcomings relative to Parquet. In particular, RNTuple data are always columnar, little-endian, decouple page boundaries (equivalent to TBasket boundaries) from entry/event boundaries, and have a language-independent interpretation in addition to their C++ interpretation. To achieve the same fluency between RNTuples and Arrow/Parquet as we currently have between TTrees and Arrow/Parquet, either (1)~a Python implementation of the RNTuple format must be developed in the style of Uproot, or (2)~the still-developing RNTuple libraries must maintain their independence from the ROOT codebase to such a degree that a small, RNTuple-only library may be wrapped in Python and distributed on PyPI (pip). Nebraska/IRIS-HEP is pursuing option (2), but progress has been slow. If RNTuple becomes a widely used format without a pip-installable library to read and write it, more effort will be needed in this area.
+
+\subsection{Databases}
+
+{\bf FIXME:} databases are widely used in HEP for metadata, but hardly ever for the main dataset. Doing so would have advantages. This section should describe the Striped experiment and prospects for a database interface to event data, like SkyhookDM and ServiceX.
+
+\subsection{Distributed computing}
 
 
 
