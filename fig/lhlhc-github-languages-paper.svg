@@ -27,17 +27,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1745"
-     inkscape:window-height="901"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
      id="namedview2685"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="407.3945"
-     inkscape:cy="229.82978"
-     inkscape:window-x="0"
-     inkscape:window-y="27"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg2683"
+     inkscape:cx="258.74908"
+     inkscape:cy="262.14237"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="line2d_22"
      fit-margin-top="5"
      fit-margin-left="5"
      fit-margin-right="5"
@@ -55,7 +55,7 @@
             <dc:title>Matplotlib v3.4.1, https://matplotlib.org/</dc:title>
           </cc:Agent>
         </dc:creator>
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3029,7 +3029,7 @@
         <path
            clip-path="url(#p464735028e)"
            d="m 238.76685,327.6072 12.85386,-24.9696 12.85385,-11.7504 12.85385,0.3672 12.85385,6.2424 12.85385,2.2032 12.85386,-6.2424 12.85385,-14.3208 12.85385,-16.8912 12.85385,12.4848 12.85385,6.2424 12.85386,-2.5704 12.85385,-3.3048 12.85385,-8.0784 12.85385,5.8752 12.85385,4.0392 12.85386,-11.7504 12.85385,-10.2816 12.85385,-19.0944 12.85385,-0.7344 12.85385,12.852 12.85386,-3.3048 12.85385,-2.9376 12.85385,-5.8752 12.85385,6.9768 12.85385,-2.5704 12.85386,-11.7504 12.85385,11.016 12.85385,-10.2816 12.85385,-11.016 12.85386,-2.9376 12.85385,-6.9768"
-           style="fill:none;stroke:#ff7f0e;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:round"
+           style="fill:none;stroke:#ff7f0e;stroke-width:1.50000002;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.50000002,3.00000004;stroke-dashoffset:0"
            id="path2136"
            inkscape:connector-curvature="0" />
       </g>
@@ -3039,7 +3039,7 @@
         <path
            clip-path="url(#p464735028e)"
            d="m 238.76685,345.2328 12.85386,0.3672 h 12.85385 12.85385 l 12.85385,-0.3672 h 12.85385 l 12.85386,0.3672 12.85385,-1.4688 12.85385,-0.7344 12.85385,0.3672 12.85385,-1.1016 12.85386,-1.836 12.85385,-3.3048 12.85385,-2.5704 12.85385,-2.5704 12.85385,-3.3048 12.85386,0.3672 12.85385,-0.3672 12.85385,-3.672 12.85385,-9.18 12.85385,-8.0784 12.85386,4.4064 12.85385,-2.5704 12.85385,-1.1016 12.85385,-3.672 12.85385,-10.2816 12.85386,-1.4688 12.85385,3.672 12.85385,-6.2424 12.85385,-7.344 12.85386,12.4848 12.85385,5.508"
-           style="fill:none;stroke:#2ca02c;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:round"
+           style="fill:none;stroke:#2ca02c;stroke-width:1.50000002;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:6.00000007,3.00000004;stroke-dashoffset:0"
            id="path2139"
            inkscape:connector-curvature="0" />
       </g>
