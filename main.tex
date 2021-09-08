@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{fullpage}
 
 \begin{document}
 
@@ -39,7 +41,8 @@ Less formally, the \href{https://scikit-hep.org/}{Scikit-HEP} project (since 201
 The big picture of developments in data science software, HEP software, and the LHC/HL-LHC timeline are depicted together in Figure~\ref{fig:hllhc-python-timeline-paper}. Major developments in data science---scientific Python, big data, GPUs and machine learning---roughly coincide with the development and first run of the LHC, from the late 1990's to 2015. The HSF, DIANA/HEP, and IRIS-HEP were active after 2015, and these organizations fostered the development of data science-oriented software in HEP.
 
 \begin{figure}
-% \includegraphics[width=\linewidth]{fig/hllhc-python-timeline-paper.pdf}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/hllhc-python-timeline-paper.pdf}
 
 \caption{Timeline of developments in scientific Python (dashed green outline), big data (orange), GPUs and machine learning (magenta), and data science in HEP (blue), overlaid on the LHC, HL-LHC, HSF, DIANA/HEP, and IRIS-HEP timelines. \label{fig:hllhc-python-timeline-paper}}
 \end{figure}
@@ -47,21 +50,24 @@ The big picture of developments in data science software, HEP software, and the 
 Originally, data science in industry was split between R for statistical techniques, Java for scale-out (particularly Hadoop and Spark), and Python. Figure~\ref{fig:analytics-by-language} shows the ascendancy of Python as the language of data analytics, as measured by Google search terms. By 2018, ``Python'' was more frequently searched with ``analytics'' than ``R'' or ``Java,'' and machine learning, which entered a renaissance in 2015, was Python-focused from the start.
 
 \begin{figure}
-% \includegraphics[width=\linewidth]{fig/analytics-by-language.pdf}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/analytics-by-language.pdf}
 
 \caption{Relative Google search volume (from \href{https://trends.google.com/}{trends.google.com}) for ``Python,'' ``R,'' and ``Java'' in the same search string with ``analytics'' (top) and ``machine learning'' (bottom). \label{fig:analytics-by-language}}
 \end{figure}
 
-Within HEP, adoption of Python also ramped up in the years following 2015. As a specific illustration of this trend, Figure~\ref{fig:lhlhc-github-languages-paper} shows the language of GitHub repositories created by CMS physicists, where CMS physicists are identified as users who forked {\tt cms-sw/cmssw} (\href{https://github.com/jpivarski-talks/2021-02-24-reload-statistics}{link to full analysis}). Python usage has been steadily growing and surpassed C++ in 2019. GitHub's language assignment is exclusive---each repository is considered entirely Python or entirely C++, but in reality most are mixed---so we can investigate with more precision by counting repositories that match search terms, such as ``numpy,'' ``matplotlib,'' and ``pandas.'' In Figure~\ref{fig:lhlhc-github-overlay-lin-paper}, we see the use of these libraries steadily increasing (long before ``uproot''). Now they appear in repositories as often as ROOT-related terms, such as ``TFile'' and ``import ROOT'' (``from ROOT import'' is less common and highly correlated with the 3 ROOT-related terms shown on the plot).
+Within HEP, adoption of Python also ramped up in the years following 2015. As a specific illustration of this trend, Figure~\ref{fig:lhlhc-github-languages-paper} shows the language of GitHub repositories created by CMS physicists, where CMS physicists are identified as users who forked {\tt cms-sw/cmssw} (\href{https://github.com/jpivarski-talks/2021-02-24-reload-statistics}{link to full analysis}). (A similar analysis of GitLab usage would be limited by GitLab's long-term availability of private repositories.) Python usage in CMS has been steadily growing and surpassed C++ in 2019. GitHub's language assignment is exclusive---each repository is considered entirely Python or entirely C++, but in reality most are mixed---so we can investigate with more precision by counting repositories that match search terms, such as ``numpy,'' ``matplotlib,'' and ``pandas.'' In Figure~\ref{fig:lhlhc-github-overlay-lin-paper}, we see the use of these libraries steadily increasing (long before ``uproot''). Now they appear in repositories as often as ROOT-related terms, such as ``TFile'' and ``import ROOT'' (``from ROOT import'' is less common and highly correlated with the 3 ROOT-related terms shown on the plot).
 
 \begin{figure}
-% \includegraphics[width=\linewidth]{fig/lhlhc-github-languages-paper.pdf}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lhlhc-github-languages-paper.pdf}
 
 \caption{Number of GitHub repositories created by CMS physicists by language (exclusive categories), showing the rise of Python and Jupyter. CMS physicists are identified as users who fork {\tt cms-sw/cmssw}. HSF, DIANA/HEP, and IRIS-HEP timelines are overlaid (top-right). \label{fig:lhlhc-github-languages-paper}}
 \end{figure}
 
 \begin{figure}
-% \includegraphics[width=\linewidth]{fig/lhlhc-github-overlay-lin-paper.pdf}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lhlhc-github-overlay-lin-paper.pdf}
 
 \caption{Number of GitHub repositories, created by CMS physicists (same analysis as in Figure~\ref{fig:lhlhc-github-languages-paper}), that match search strings (non-exclusive categories). This shows the rise of Pythonic data analysis (NumPy, Matplotlib, Pandas), with ROOT (C++ and Python, also increasing) for scale. \label{fig:lhlhc-github-overlay-lin-paper}}
 \end{figure}
@@ -69,13 +75,15 @@ Within HEP, adoption of Python also ramped up in the years following 2015. As a 
 A pre-workshop survey of \href{https://indico.cern.ch/e/PyHEP2020}{PyHEP 2020} registrants also indicated that the HEP community is using an even mix of C++ and Python. Figure~\ref{fig:pyhep2020-survey-paper} shows responses to basic questins and Figure~\ref{fig:lhlhc-familiarity-with-packages-paper} shows the registrants' familiarity and usage of popular data science and HEP tools.
 
 \begin{figure}
-% \includegraphics[width=\linewidth]{fig/pyhep2020-survey-paper.pdf}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/pyhep2020-survey-paper.pdf}
 
 \caption{Survey results from 406 registrants of PyHEP 2020 illustrating the mix of C++ and Python (and no other language) among physicists, and the use of Python primarily for analysis. \label{fig:pyhep2020-survey-paper}}
 \end{figure}
 
 \begin{figure}
-% \includegraphics[width=\linewidth]{fig/lhlhc-familiarity-with-packages-paper.pdf}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lhlhc-familiarity-with-packages-paper.pdf}
 
 \caption{Familiarity and usage of data science tools (top) and HEP data analysis tools (bottom) from the same survey as Figure~\ref{fig:pyhep2020-survey-paper}. \label{fig:lhlhc-familiarity-with-packages-paper}}
 \end{figure}
@@ -87,7 +95,7 @@ Clearly, HEP analysis culture is in the midst of a transition, perhaps as signif
 
 \item Following the Pandas DataFrame model (originally from R), columns---named, typed attributes of all entries in a dataset---are becoming more visible in analysis at the expense of rows, which are instances of identically typed data, usually collision events in HEP. The word ``{\bf columnar analysis}'' is frequently applied to emphasize column-granularity, whether it is for internal data engineering (transferring less data or vectorizing a calculation) or it is highly visible to users as array-at-a-time operations. Array-at-a-time interfaces bridge the gap between interactive tinkering (in the style of Pandas or {\tt TTree::Draw}) and production-ready analysis script.
 
-\item It has also become common for developers in HEP to describe their tools as ``{\bf declarative}'' (or ``{\bf functional}''). In computer science, a declarative language (like SQL) describes calculations independently of the order in which they would be calculated. In HEP, this can mean a complete separation of code and data, such as fast-carpenter, which specifies cuts and quantities to plot using YAML. It can also refer to domain-specific languages that are as declarative as YAML, such as ADL, CutLang, and func\_adl. At the very least, it means a separation of the event loop as a Directed Cyclic Graph (DAG) from the calculations performed on each event, as in ROOT's RDataFrame, or on a partitino of events, as in Coffea's Processor. Since HEP collision events can almost always be processed in any order, a declarative DAG for the event workflow is sufficient to plug HEP analyses into a distributed scheduler, such as Spark, Dask, or Ray.
+\item It has also become common for developers in HEP to describe their tools as ``{\bf declarative}'' (or ``{\bf functional}''). In computer science, a declarative language (like SQL) describes calculations independently of the order in which they would be calculated. In HEP, this can mean a complete separation of code and data, such as FAST-carpenter, which specifies cuts and quantities to plot using YAML. It can also refer to domain-specific languages that are as declarative as YAML, such as ADL, CutLang, and func\_adl. At the very least, it means a separation of the event loop as a Directed Cyclic Graph (DAG) from the calculations performed on each event, as in ROOT's RDataFrame, or on a partitino of events, as in Coffea's Processor. Since HEP collision events can almost always be processed in any order, a declarative DAG for the event workflow is sufficient to plug HEP analyses into a distributed scheduler, such as Spark, Dask, or Ray.
 \end{itemize}
 
 \section{The future of HEP analysis tools}
@@ -150,10 +158,73 @@ In principle, the Julia language would be ideal for HEP, as it combines Python's
 
 \subsection{Histogramming}
 
+Whereas the previous two sections, distributed computing and acceleration (horizontal and vertical scaling), are general concerns beyond HEP and should be addressed by non-HEP software products, histogramming is more HEP-specific. The statistical concept of approximating a distribution with binned counts is generic, but the way that physicists use histograms as fillable, mergeable objects is unique. Most plotting libraries provide a histogram function to {\it plot} data as a binned histogram, but HEP users expect to be able to fill histogram objects, save them to disk, add them, weight them by relative luminosities, and fit them with parameterized curves or more general statistical methods. All of the software products we know of with these features have some connection to HEP (developed for HEP or by a physicist who has left the field).
 
+Histogram additivity is useful because we are interested in distributions of enormous numbers of statistically independent events, which isn't true of all fields of data analysis. This paradigm is general enough to think that our histogram-centric way of doing analysis might catch on beyond HEP, but only if our tools can be easily installed and used in the wider ecosystem.
 
+Until recently, histogramming in Python was too fractured to be productive. There were at least 21 pip-installable packages for histogramming on PyPI before April 2019, not counting major projects like ROOT and YODA (not pip-installable). All of these implement basic functionality, some with fast filling performance, but none were a ``complete'' package for HEP analysis. The most complete, Physt, couldn't handle negative weights, for instance. It is not difficult to create a basic histogramming library in Python, but it is difficult to make it general enough for all use-cases.
 
+The inclusion of a C++ histogram library into Boost (by a HEP physicist) and a Python wrapper for this library in late 2019 changed the situation by providing a ``nucleation site'' for histogram development. As a focused, single-purpose library, Boost Histogram fits the data science ideal of modularity, and its association with Boost ensured a longevity that incentivized building on top of this library, rather than competing with it by building new libraries from scratch. As a case in point, the hist library adds analyst-friendly features (such as plotting) that the no-frills Boost Histogram lacks, but it does so as a subclass of the Boost Histogram type. Two libraries with the same functionality can be complementary if one uses the other to provide a different level of abstraction.
 
+Beyond packaging, the increasing use of template fits in HEP analysis is changing how histograms are used. Traditionally, histograms have represented data that a human might inspect and fit with a parameterized curve. Template fits use the histograms themselves as the curve and tune weights required to fit one weighted sum of histograms to another. Data in many signal and background samples must be subdivided into signal, control, and validation regions, and they must be filled under thousands of systematic variations. The data for these fits may be thought of as weighted event counts in voxels of a many-dimensional space, usually more than the 3 dimensions that a human can inspect, and some of these dimensions are not continuous, such as ``number of $b$-tags.'' Binning dimensions for systematic variations represent a function, rather than a distribution, which differs from the original purpose of histogramming, but is well-defined if applied consistently.
 
+Modern histogramming libraries, such as Boost Histogram and ROOT's v7 histograms, allow arbitrarily many dimensions with different dimension types (categorical and continuous), but they do not manage filling a distribution along some dimensions and functional variations along others. Special tools like HistFitter, TRexFitter, cabinetry, and FAST-carpenter fill this niche with a higher level of abstraction above histograms. Declarative configurations (usually YAML) describe how to subdivide the data into regions, how to bin axes, and how to vary systematics. Template fitters like Combine, HistFactory, and pyhf perform the fits, make plots, and set statistical limits.
+
+While these developments are improving the statistical reach of LHC analyses, the histograms that comprise the template data are not often serialized efficiently. Thousands of histograms in a template-set have the same or mostly the same axes: the usual approach of saving them as separate histogram objects in a ROOT file duplicates the axis metadata in independently compressed buffers. The common structure of template-sets would benefit from a columnar approach, in which all or large chunks of the numeric data are stored in contiguous buffers and shared metadata (axes, labels, etc.) are stored exactly once. HDF5 and Zarr are well-suited to efficiently store and retrieve a many-dimensional array like this.
+
+In addition to efficient serialization, histogram formats (Boost Histogram, ROOT, YODA, HEPData YAML) and views, such as plottable histograms, components of a template-set, raw arrays, and tables such as Pandas and xarray, need to be more interconvertible. Each of these formats and views have distinct benefits. Being able to fluidly convert among them all would have a multiplyign effect on analysis productivity.
+
+\subsection{Fitting and statistics}
+
+Software that performs fits and reveals statistical limits or measurements with uncertainties needs to be even more customized for HEP use-cases than histogramming. Even the traditional case of fitting to a parameterized curve is not entirely common beyond HEP, since first-principles or approximate functional forms are more often achievable in HEP and related fields than those that study human behavior (e.g.\ targeted advertising). Today, HEP analysts engage in much more refined---and specialized---fits than traditional curve-fitting, and the development of new statistical techniques is often viewed as a part of the process of doing analysis in HEP.
+
+As such, there are a lot of small, focused packages in this area. The most foundational is iminuit (2015), following the now-deprecated pyminuit (2008), which provides Minuit minimization in Python so that users can build binned and unbinned fits from the ground up. iminuit is a good example of the ``mixed future,'' in which a decades-old algorithm developed in HEP (Minuit, 1975) is fully integrated into NumPy, SciPy, Jupyter, Numba, JAX, and Matplotlib. iminuit has a larger userbase among astronomers than physicists because astronomers adopted Python earlier than HEP. Packages like probfit (2012, now deprecated) and zfit (2019) provide high-level curve-fitting interfaces, with zfit using a variety of minimizers as backends: iminuit, nlopt, TensorFlow, and SciPy. Whereas Minuit focuses on detailed few-parameter fits (fewer than 100), optimizers for deep learning like TensorFlow can optimize thousands of parameters at once, but provide less detail about the shape of the minimum for uncertainty bands.
+
+For template binned fits, pyhf (2018) is a major project, also with a variety of backends: NumPy, TensorFlow, PyTorch, and JAX. Two of these, TensorFlow (through an explicit DAG) and JAX (through autodifferentiation) differentiate the objective function for faster convergence, and all but NumPy can take advantage of GPUs. pyhf is implemented in Python without ROOT dependencies, but is typically much faster than ROOT-based template fitters, such as HistFitter, because it is leveraging exact derivaties and hardware acceleration through its backends. For example, one fully optimized model took 10~hours to compute in HistFitter and 30~minutes in pyhf, and another took 20~minutes in HistFitter and 10~seconds in pyhf. pyhf is cited in 19~publications and is regularly used to derive limits in ATLAS, 7~of which are published as full likelihood functions in the HEPData repository, which allows the experimental result to be applied to new theoretical models in the future.
+
+Statistical inference is such a broad field that there is a long tail of specialized packages. To get a sense of the variety, here are a few from PyPI:
+
+\begin{itemize}
+\item visualization with statistical interpretation: quickstats, heppi, hep\_spt, scikit-validate (comparison with baseline), ClusterKinG (cluster analysis), hepstats (Bayesian Blocks for histogram optimization, hypothesis tests, splot generators)
+\item steps in an analysis: PyOD (outlier detection), raredecay (reweighting and classification), PynFold (unfolding), selanneal (optimizing cuts), pyBumpHunter (bump hunting), simplify (simplifying likelihood functions), fastjet (Python wrapper of the FastJet library)
+\item HEP-specific interfaces to data science tools: MadMiner (machine learning inference), Hepynet (deep neural networks)
+\item physics-specific generators and optimizers: dEFT-HEP (fitting Effective Field Theories), smelli (likelihoods for Standard Model Effective Field Theory), wilson (running Standard Model Effective Field Theories), minimal-lagrangians (for dark matter models), mt2 (stransverse mass variable), Hazma (dark matter limits), PhaseSpace (phase space generation using TensorFlow).
+\end{itemize}
+
+The small, specialized package approach can be contrasted with distributing statistical tools within a framework like ROOT. The advantage of creating a new package and putting it on PyPI, which makes it pip-installable by anyone with a Python distribution, is that the developer completely controls the timescale in which updates can be distributed to users. This is particularly useful for statistical techniques that develop rapidly, and for correcting bugs discovered by users. The same procedure, distributed as a class in ROOT, would involve a pull review process before it can be accepted into the main codebase and would only reach users (other than hand-picked testers) on ROOT's deployment timescale, which is once every 1--5~months and can depend on constraints imposed by the LHC experiments. Moreover, if the original developers abandon a Python package, it can simply be ignored, but an abandoned class in ROOT has to be maintained indefinitely by the ROOT developers.
+
+On the other hand, independent packaging puts the onus of good packaging practices on the developers, who would often rather focus on physics or statistics. Good packaging is more difficult than it at first appears: it's easy to assume (explicitly or implicitly) that the user's computer is set up like the developer's, often through unlisted dependencies, leading to installation problems. Modern packaging tools guard against this, but outdated instructions that don't use the new tools are easy to find online, making it hard for new developers to know what to do.
+
+Scikit-HEP, originally conceived as a metapackage for HEP, evolved quickly toward being a collection of well-scoped libraries that form an analysis ecosystem for HEP (together with common libraries beyond HEP). As a GitHub organization, Scikit-HEP adopts repositories contributed by independent developers so that they are mutually discoverable, but it also enforces high standards for packaging, testing, and software architecture. To promote quality packaging, the \href{https://github.com/scikit-hep/cookie}{scikit-hep/cookie} project provides a recipe for cookiecutter, which uses command-line questions to generate a package skeleton with the current best practices: declarative configuration (setup.cfg, pyproject.toml, MANIFEST.in), automatic version-generation (setuptools\_scm), compiler tools for extensions (pybind11 and cibuildwheel), simplified environments for pure Python packages (filt and poetry), automated testing (pytest and GitHub Actions), dependency updates (Dependabot), formatting and linting (pre-commit, MyPy, Flake8, Black, isort, PyUpgrade), and documentation stubs (Sphinx and ReadTheDocs). It is much easier to use a generated template, even if an existing project has to be ported into it, than it is to follow a list of rules.
+
+What this does not solve, however, is the problem of discovery. Physicists are creating packages without knowing that they duplicate functionality, or without reaching potential users, or without knowing packaging best practices that would solve many common installation issues. This is a problem of building community: with a well-defined community, a physicist who wants to share a statistical technique as a package would have heard of similar projects and would be aware of where to look for guidance. The PyHEP working group and its events are increasingly filling that role, with hundreds of attendees at the 2020 and 2021 workshops, Module of the Month demos, and active Gitter channels. IRIS-HEP is also an intellectual hub for analysis tool development, mainly thorugh its very active Slack workspace. However, the nature of analysis tool development is very distributed, and these support networks haven't permeated through the entire HEP community.
+
+\subsection{Relationship to the community outside of HEP}
+
+As described above, we don't expect all of our software needs to be satisfied by the data science industry, nor should all the software we use be written by physicists. In general, software functionality fits into the following categories, with a spectrum between them:
+
+\begin{enumerate}
+\item The functionality in question is not at all HEP-specific and is well-developed outside of HEP, such as machine learning foundations, distributed computing, JIT-compilation, autodifferentiation, and computing interfaces such as notebooks and other code editors.
+
+\item The functionality is in principle not HEP-specific, but also not well-developed outside of HEP. Examples include Cling (the C++ JIT-compiler), Awkward Array (for manipulation of irregularly shaped data), histograms-as-objects, and some statistical techniques like template fits and unfolding.
+
+\item The functionality is and will likely always be HEP-specific, such as tools for applying energy corrections (correctionslib), manipulating Lorentz vectors (Vector), and dealing with particle decay tables (DecayLanguage).
+\end{enumerate}
+
+Given the upcoming computational challenges of the HL-LHC and the maturity of data science software today, it would be prudent to adopt data science solutions in category (1), and to contribute back or proselytize HEP-developed solutions in category (2), so that they can be maintained by the larger community as well. In category (2), a project like Cling has the LLVM community to receive it, once technical issues are overcome, but a project like Awkward Array or hist would have to convince data scientists beyond HEP that non-tabular data or histogram objects are useful concepts before we can expect collaboration. Better interoperability between HEP tools and data science tools aids sharing in both directions: generic tools become usable in HEP (so that we do not need to maintain them) and HEP-style techniques may become common beyond HEP (so that we do not need to maintain them). In both directions, the key ingredient is interoperability.
+
+\section{Management, risk assessment, and timelines}
+
+The use of data science software in HEP is not centrally managed, but HSF/PyHEP, IRIS-HEP, and major (community) project and package developers such as Scikit-HEP and Coffea have a strong influence on its direction and priorities. IRIS-HEP, in particular, is funding the development of core pieces of the ecosystem.
+
+Both within IRIS-HEP and between projects, development goals are incremental and adjust to what developers of related packages are working on. Through constant communication in the HSF and PyHEP Gitter channels (as well as other, smaller-scoped channels) and the IRIS-HEP Slack project, these teams have a shared idea of what data science/HEP interoperability would and should look like, and are collaboratively building up that ecosystem. Different teams and individuals may have slightly different goals---for instance, Coffea users need to analyze present-day data and IRIS-HEP is focused on the HL-LHC---but these kinds of differences can be accommodated. For example, Coffea needed histogram and Lorentz vector objects on a shorter timescale than IRIS-HEP developers could produce a future-proof foundation, so both teams agreed for Coffea to develop ``quick and dirty'' components that were later replaced by the IRIS-HEP ones. Coffea's implementation of both served as prototyes that informed the IRIS-HEP development.
+
+Communication through PyHEP Gitter, IRIS-HEP Slack, and issues/pull requests in GitHub is more frequent and a denser network between teams than the conventional HEP style of slide-presentations in weekly meetings. However, the problem of discoverability is as prevalent as ever: software developers ahve to ``find'' this network to get oriented. It is still the case that physicist-developers build packages in isolation, only to find out that they could have multiplied their effectiveness if they had been plugged into this ecosystem earlier.
+
+Progress is generally measured in terms of physics analysis productivity in current LHC analyses, which is not the same thing as raw computational performance. Given the way that development self-adjusts to present conditions, the risk is that scaling to the HL-LHC will be ignored. For this reason, IRIS-HEP's Analysis Systems group is conducting a full-scale exercise called the Analysis Grand Challenge as an integration test of all components at HL-LHC scales.
+
+Development of ecosystem components is continuous, but the Analysis Grand Challenge will be conducted this year (2021--2022), leaving considerable time for adjustment before the start-up of the HL-LHC. Furthermore, much of this ecosystem is already being exploited by hundreds of physicists, in real conditions of LHC analysis, and experience from this ``exercise'' will be crucial input toward future developments.
+
+{\bf FIXME:} need more details about the Analysis Grand Challenge. Also, that would make it more conclusion-y. The previous section makes a nice conclusion, which we could get for free if we just drop this ``Management, risk assessment, and timelines'' section.
 
 \end{document}
