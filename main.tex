@@ -6,6 +6,9 @@
 
 \begin{document}
 
+\title{Data science tools for analysis}
+\maketitle
+
 \section{Description and relevance for the HL-LHC}
 
 Unlike other sections of this document, ``data science tools'' is not an experiment or software product with centralized management. The word describes a collection of interrelated small projects, developed by a network of teams or individuals in different organizations and communities. It is relevant to HL-LHC planning because many of the developers and users of this software are LHC physicists, particularly the Ph.D.\ students and postdocs involved in the actual implementation of LHC analyses.
@@ -30,7 +33,7 @@ Although we can find evidence of physicists attempting to use tools like NumPy, 
 
 The first of these organizations, the \href{https://hepsoftwarefoundation.org/}{HEP Software Foundation (HSF)}, was conceived in a community event at SLAC in 2015 and cohered in the \href{https://hepsoftwarefoundation.org/organization/cwp.html}{Community Whitepaper project} of 2017. The HSF's primary mission is communication: helping project developers find each other to work toward a common vision, as well as providing fora in which new projects are conceived, particularly across experiment boundaries. The HSF does not fund projects or direct them. The \href{https://hepsoftwarefoundation.org/workinggroups/dataanalysis.html}{Data Analysis Working Group (DAWG)} hosts monthly meetings on data analysis software, giving physicist-developers a place to showcase their work and find users and collaborators.
 
-The \href{https://hepsoftwarefoundation.org/workinggroups/pyhep.html}{``Python in HEP'' working group (PyHEP)} hosts large, annual workshops on both domain-specific and infrastructure libraries, as well as Python Module of the Month meetings to focus on data science and HEP domain-specific packages of interest.
+The \href{https://hepsoftwarefoundation.org/workinggroups/pyhep.html}{``Python in HEP'' working group (PyHEP)} hosts large, annual workshops on both domain-specific and infrastructure libraries, as well as Python Module of the Month meetings to focus on data science and HEP domain-specific packages of interest.domm
 
 \href{http://diana-hep.org/}{DIANA/HEP} and its much larger successor, \href{https://iris-hep.org/}{IRIS-HEP}, were funded by the NSF in 2015 and 2018, respectively, to support the development of HEP software (a)~financially, by funding software developers, (b)~as an intellectual hub for sharing knowledge and fostering connections, and (c)~through training and education. The directly funded software products include Awkward Array, hist, pyhf, recast, ServiceX, SkyhookDM, Uproot, and Vector, all of which have substantially influenced the Python/data science ecosystem in HEP. Weekly DIANA/HEP and IRIS-HEP topical meetings are held by physicists and occasionally draw data scientists from industry to share tools and techniques, and IRIS-HEP hosts cross-experiment software tutorials, as well as the annual \href{http://codas-hep.org/}{CoDaS-HEP school}.
 
@@ -126,11 +129,24 @@ It is also important to note that ROOT data will not always be TTrees. The ROOT 
 
 \subsection{Databases}
 
-{\bf FIXME:} databases are widely used in HEP for metadata, but hardly ever for the main dataset. Doing so would have advantages. This section should describe the Striped experiment and prospects for a database interface to event data, like SkyhookDM and ServiceX.
+{\bf DRAFT}
+
+The most common patterns for data access in physics analysis are actually more suited to databases than files. Typically, experimental collaborations centrally produce analysis datasets with basic physical quantities stored as primitive types. Many analyses will share some subset of these quantities, but each analysis may also require specific variables that are not computed by default. Because of the difficulty and tedium involved in modifying or extending the binary files that compose the centrally-produced datasets, analysts will rerun the entire dataset production just to add their variables in a consistent and usable way. In contrast, a database allows storing and accessing each variable independently, eliminating any duplication of effort, processing, or disk space. A companion product to such a database system is a query language that can succinctly express typical data projections and filters. Commercial data offerings aimed at ``big data’’ have reached similar data scales as HEP; however, they are not yet competitive with HEP domain-specific tools with respect to query language quality or query performance~\cite{Graur:2021isi}.
+
+The Striped project~\cite{Chang:2017ske,Gutsche:2020kmd} implemented a successful prototype of database-style analysis. Along the way, the project developed one of the first non-trivial implementations of columnar analysis in the scientific Python ecosystem, including automatic scaling in batch systems, which grew into Coffea~\cite{Smith:2020pxs}. A mature framework for the usage of databases for analysis has the potential to provide many benefits. Each collaboration could centralize its analysis data in a global, federated, and extensible database, with automatic replication, caching, versioning, provenance tracking, and improved metadata handling. These features, which naturally arise from database-style analysis, would significantly improve both the time to insight and analysis reproducibility. However, because this mode of analysis data management is radically different from what experimental collaborations have pursued to date, it will require a higher level of dedicated effort to put into production.
+
+There are a few projects that are picking up where Striped left off:
+\begin{itemize}
+\item{ServiceX provides the ability to fill databases directly with derived variables.}
+\item{SkyhookDM is pursuing database storage for analysis data.}
+\item{Coffea's columnservice~\cite{columnservice} provides a demonstration of useful configurations and interfaces based on analyst feedback.}
+\item{Tiled aims to provide a unified API for data access, which would ease the transition from file-based analysis to broader usage of databases.}
+\end{itemize}
+Given the many advantages of this approach, described above, increasing effort in this area should be considered high priority.
 
 \subsection{Distributed computing}
 
-The first highly visible data analysis software products from industry addressed the problem of scaling to large datasets, under the catchphrase ``big data.'' A MapReduce framework developed by Google (2004) was reimplemented in open-source Java as Apache Hadoop (2006) and was generalized beyond ``map'' and ``reduce'' to a full suite of functional programming primitives in Apache Spark (2014). These software products differ from anything used in HEP, other than ROOT's PROOF system, in that they mix data analysis logic with scale-out. Traditional batch queue systems run encapsulated code, such as a shell script, that is opaque to the scheduler, so although systems like HTCondor's DAGMan had map/reduce and task retry features, those features were disconnected from the analysis logic. Big data frameworks can repartition and shuffle intermediate data because the data types in which users write their analyses are a part of the scheduler.
+The first highly visible data analysis software products from industry addressed the problem of scaling to large datasets, under the catchphrase ``big data.'' A MapReduce framework developed by Google (2004) was reimplemented in open-source Java as Apache Hadoop (2006) and was generalized beyond ``map'' and ``reduce'' to a full suite of functional programming primitives in Apache Spark (2014). These software products differ from anything used in HEP, other than ROOT's PROOF system, in that they mix data analysis logic with scale-out. Traditional batch queue systems run encapsulated code, such as a shell script, that is opaque to the scheduler, so although systems like HTCondor's DAGMan had map/reduce and task retry features, those features were disconnected from the analysis logic. Big data frameworks can repartition and shuffle intermediate data because the data types in which users write their analyses are a part of the scheduler. 
 
 Apache's decisions to write Hadoop and Spark in Java/Scala made sense because most corporations have a Java-based intranet for business intelligence. It proved difficult for HEP to adopt these frameworks because the Java Virtual Machine (JVM) does not mix well with C++, and therefore any of our tools. Not only are the in-memory data formats different, but Java manages a separate heap from the libc/malloc-based world, freely moving data in RAM (i.e.\ invalidating pointers) as a JVM-dependent detail. Defensively copying data between Java and any Python or C++ process is still slow and brittle.
 
@@ -208,7 +224,7 @@ As described above, we don't expect all of our software needs to be satisfied by
 
 \item The functionality is in principle not HEP-specific, but also not well-developed outside of HEP. Examples include Cling (the C++ JIT-compiler), Awkward Array (for manipulation of irregularly shaped data), histograms-as-objects, and some statistical techniques like template fits and unfolding.
 
-\item The functionality is and will likely always be HEP-specific, such as tools for applying energy corrections (correctionslib), manipulating Lorentz vectors (Vector), and dealing with particle decay tables (DecayLanguage).
+\item The functionality is and will likely always be HEP-specific, such as tools for applying energy corrections (\href{https://github.com/cms-nanoAOD/correctionlib}{correctionlib}), manipulating Lorentz vectors (\href{https://github.com/scikit-hep/vector}{Vector}), and dealing with particle decay tables (\href{https://github.com/scikit-hep/decaylanguage}{DecayLanguage}).
 \end{enumerate}
 
 Given the upcoming computational challenges of the HL-LHC and the maturity of data science software today, it would be prudent to adopt data science solutions in category (1), and to contribute back or proselytize HEP-developed solutions in category (2), so that they can be maintained by the larger community as well. In category (2), a project like Cling has the LLVM community to receive it, once technical issues are overcome, but a project like Awkward Array or hist would have to convince data scientists beyond HEP that non-tabular data or histogram objects are useful concepts before we can expect collaboration. Better interoperability between HEP tools and data science tools aids sharing in both directions: generic tools become usable in HEP (so that we do not need to maintain them) and HEP-style techniques may become common beyond HEP (so that we do not need to maintain them). In both directions, the key ingredient is interoperability.
@@ -226,5 +242,10 @@ Progress is generally measured in terms of physics analysis productivity in curr
 Development of ecosystem components is continuous, but the Analysis Grand Challenge will be conducted this year (2021--2022), leaving considerable time for adjustment before the start-up of the HL-LHC. Furthermore, much of this ecosystem is already being exploited by hundreds of physicists, in real conditions of LHC analysis, and experience from this ``exercise'' will be crucial input toward future developments.
 
 {\bf FIXME:} need more details about the Analysis Grand Challenge. Also, that would make it more conclusion-y. The previous section makes a nice conclusion, which we could get for free if we just drop this ``Management, risk assessment, and timelines'' section.
+
+\section{Bibliography}
+
+%% Surely, this won't work right away. It's a reminder to make it work.
+%\bibliography{bibfile}
 
 \end{document}
