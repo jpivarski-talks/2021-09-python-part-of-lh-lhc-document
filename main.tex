@@ -31,9 +31,9 @@ Although we can find evidence of physicists attempting to use tools like NumPy, 
 \item Internally, organizations within HEP have mediated communications about data science software, helping physicist-developers find each other, reduce duplication, and build on each others' tools. These organizations have legitimized the idea of using data science software in HEP, and they are actively supporting its development, especially for the foundational components that enable specialized tools.
 \end{itemize}
 
-The first of these organizations, the \href{https://hepsoftwarefoundation.org/}{HEP Software Foundation (HSF)}, was conceived in a community event at SLAC in 2015 and cohered in the \href{https://hepsoftwarefoundation.org/organization/cwp.html}{Community Whitepaper project} of 2017. The HSF's primary mission is communication: helping project developers find each other to work toward a common vision, as well as providing fora in which new projects are conceived, particularly across experiment boundaries. The HSF does not fund projects or direct them. The \href{https://hepsoftwarefoundation.org/workinggroups/dataanalysis.html}{Data Analysis Working Group (DAWG)} hosts monthly meetings on data analysis software, giving physicist-developers a place to showcase their work and find users and collaborators.
+The first of these organizations, the \href{https://hepsoftwarefoundation.org/}{HEP Software Foundation (HSF)}, was conceived in a community event at SLAC~\cite{hsf-workshop-slac2015} in 2015 and cohered in the \href{https://hepsoftwarefoundation.org/organization/cwp.html}{Community Whitepaper project}~\cite{Albrecht2019} of 2017. The HSF's primary mission is communication: helping project developers find each other to work toward a common vision, as well as providing fora in which new projects are conceived, particularly across experiment boundaries. The HSF does not fund projects or direct them. The \href{https://hepsoftwarefoundation.org/workinggroups/dataanalysis.html}{Data Analysis Working Group (DAWG)} hosts monthly meetings on data analysis software, giving physicist-developers a place to showcase their work and find users and collaborators.
 
-The \href{https://hepsoftwarefoundation.org/workinggroups/pyhep.html}{``Python in HEP'' working group (PyHEP)} hosts large, annual workshops on both domain-specific and infrastructure libraries, as well as Python Module of the Month meetings to focus on data science and HEP domain-specific packages of interest.domm
+The \href{https://hepsoftwarefoundation.org/workinggroups/pyhep.html}{``Python in HEP'' working group (PyHEP)} hosts large, annual workshops on both domain-specific and infrastructure libraries, as well as Python Module of the Month meetings to focus on data science and HEP domain-specific packages of interest.
 
 \href{http://diana-hep.org/}{DIANA/HEP} and its much larger successor, \href{https://iris-hep.org/}{IRIS-HEP}, were funded by the NSF in 2015 and 2018, respectively, to support the development of HEP software (a)~financially, by funding software developers, (b)~as an intellectual hub for sharing knowledge and fostering connections, and (c)~through training and education. The directly funded software products include Awkward Array, hist, pyhf, recast, ServiceX, SkyhookDM, Uproot, and Vector, all of which have substantially influenced the Python/data science ecosystem in HEP. Weekly DIANA/HEP and IRIS-HEP topical meetings are held by physicists and occasionally draw data scientists from industry to share tools and techniques, and IRIS-HEP hosts cross-experiment software tutorials, as well as the annual \href{http://codas-hep.org/}{CoDaS-HEP school}.
 
@@ -129,19 +129,19 @@ It is also important to note that ROOT data will not always be TTrees. The ROOT 
 
 \subsection{Databases}
 
-{\bf DRAFT}
-
 The most common patterns for data access in physics analysis are actually more suited to databases than files. Typically, experimental collaborations centrally produce analysis datasets with basic physical quantities stored as primitive types. Many analyses will share some subset of these quantities, but each analysis may also require specific variables that are not computed by default. Because of the difficulty and tedium involved in modifying or extending the binary files that compose the centrally-produced datasets, analysts will rerun the entire dataset production just to add their variables in a consistent and usable way. In contrast, a database allows storing and accessing each variable independently, eliminating any duplication of effort, processing, or disk space. A companion product to such a database system is a query language that can succinctly express typical data projections and filters. Commercial data offerings aimed at ``big data’’ have reached similar data scales as HEP; however, they are not yet competitive with HEP domain-specific tools with respect to query language quality or query performance~\cite{Graur:2021isi}.
 
 The Striped project~\cite{Chang:2017ske,Gutsche:2020kmd} implemented a successful prototype of database-style analysis. Along the way, the project developed one of the first non-trivial implementations of columnar analysis in the scientific Python ecosystem, including automatic scaling in batch systems, which grew into Coffea~\cite{Smith:2020pxs}. A mature framework for the usage of databases for analysis has the potential to provide many benefits. Each collaboration could centralize its analysis data in a global, federated, and extensible database, with automatic replication, caching, versioning, provenance tracking, and improved metadata handling. These features, which naturally arise from database-style analysis, would significantly improve both the time to insight and analysis reproducibility. However, because this mode of analysis data management is radically different from what experimental collaborations have pursued to date, it will require a higher level of dedicated effort to put into production.
 
 There are a few projects that are picking up where Striped left off:
+
 \begin{itemize}
 \item{ServiceX provides the ability to fill databases directly with derived variables.}
 \item{SkyhookDM is pursuing database storage for analysis data.}
 \item{Coffea's columnservice~\cite{columnservice} provides a demonstration of useful configurations and interfaces based on analyst feedback.}
 \item{Tiled aims to provide a unified API for data access, which would ease the transition from file-based analysis to broader usage of databases.}
 \end{itemize}
+
 Given the many advantages of this approach, described above, increasing effort in this area should be considered high priority.
 
 \subsection{Distributed computing}
@@ -245,7 +245,7 @@ Development of ecosystem components is continuous, but the Analysis Grand Challe
 
 \section{Bibliography}
 
-%% Surely, this won't work right away. It's a reminder to make it work.
-%\bibliography{bibfile}
+\bibliography{bibfile}{}
+\bibliographystyle{unsrt}
 
 \end{document}
