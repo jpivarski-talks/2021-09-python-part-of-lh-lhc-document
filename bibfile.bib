@@ -1,6 +1,7 @@
 @misc{hsf-workshop-slac2015,
 author={{Boehnlein}, Amber and {Mato}, Pere and {Mount}, Richard and {Wenaus}, Torre},
 title={{The HEP Software Foundation Workshop}},
+year={2015},
 howpublished="\url{https://indico.cern.ch/event/357737}",
 }
 @article{Albrecht2019,
@@ -17,6 +18,223 @@ abstract={Particle physics has an ambitious and broad experimental programme for
 issn={2510-2044},
 doi={10.1007/s41781-018-0018-8},
 url={https://doi.org/10.1007/s41781-018-0018-8}
+}
+@article{Shadura_2020,
+	doi = {10.1088/1742-6596/1525/1/012050},
+	url = {https://doi.org/10.1088/1742-6596/1525/1/012050},
+	year = 2020,
+	month = {apr},
+	publisher = {{IOP} Publishing},
+	volume = {1525},
+	pages = {012050},
+	author = {O Shadura and B Bockelman and V Vassilev},
+	title = {Evolution of {ROOT} package management},
+	journal = {Journal of Physics: Conference Series},
+	abstract = {ROOT is a large code base with a complex set of build-time dependencies; there is a significant difference in compilation time between the “core” of ROOT and the full-fledged deployment. We present results on a “delayed build” for internal ROOT packages and external packages. This gives the ability to offer a “lightweight” core of ROOT, later extended by building additional modules to extend the functionality of ROOT. As a part of this work, we have improved the separation of ROOT code into distinct modules and packages with minimal dependencies. This approach gives users better flexibility and the possibility to combine various build features without rebuilding from scratch.
+
+Dependency hell is a common problem found in software and particularly in HEP software ecosystem. We would like to discuss an improvement of artifact management (“lazy-install”) system as a solution to the “dependency hell” problem.
+
+HEP software stack usually consists of multiple sub-projects with dependencies. The development model is often distributed, independent and non-coherent among the sub-projects. We believe that software should be designed to take advantage of other software components that are already available, or have already been designed and implemented for use elsewhere rather than “reinventing the wheel”.
+
+The main idea is to build the ROOT project and all of its dependencies recursively and incrementally, making it fundamentally different than just adding one external project and rebuilding from scratch. In addition, this allows to keep a list of dependencies to be able to resolve possible incompatibility of transitive dependencies caused by the versions conict.
+
+In our contribution, we will present our approach to artifact management system of ROOT together with a set of examples and use cases.}
+}
+@article{Hartmann:2021qzp,
+    author = {Hartmann, Nikolai and Elmsheuser, Johannes and Duckeck, G\"unter},
+    collaboration = "ATLAS Software and Computing",
+    title = "{Columnar data analysis with ATLAS analysis formats}",
+    doi = "10.1051/epjconf/202125103001",
+    journal = "EPJ Web Conf.",
+    volume = "251",
+    pages = "03001",
+    year = "2021"
+}
+@article{Pivarski2017FastAT,
+  title={Fast access to columnar, hierarchically nested data via code transformation},
+  author={J. Pivarski and P. Elmer and B. Bockelman and Zhe Zhang},
+  journal={2017 IEEE International Conference on Big Data (Big Data)},
+  year={2017},
+  pages={253-262}
+}
+@article{Pivarski:2020txo,
+    author = "Pivarski, Jim and Lange, David and Elmer, Peter",
+    title = "{Nested data structures in array frameworks}",
+    doi = "10.1088/1742-6596/1525/1/012053",
+    journal = "J. Phys. Conf. Ser.",
+    volume = "1525",
+    number = "1",
+    pages = "012053",
+    year = "2020"
+}
+@techreport{10.5555/895948,
+author = {Lloyd, J. W.},
+title = {Declarative Programming in Escher},
+year = {1995},
+publisher = {University of Bristol},
+address = {GBR},
+abstract = {Escher is a declarative, general-purpose programming language which integrates the
+best features of both functional and logic programming languages. It has types and
+modules, higher-order and meta-programming facilities, and declarative input/output.
+Escher also has a collection of system modules, providing numerous operations on standard
+data types such as integers, lists, characters, strings, sets, and programs. The main
+design aim is to combine in a practical and comprehensive way the best ideas of existing
+functional and logic languages, such as Godel, Haskell, and $lambda$Prolog. Indeed,
+Escher goes well beyond Godel in its ability to allow function definitions, its higher-order
+facilities, its improved handling of sets, and its declarative input/output. Escher
+also goes well beyond Haskell in its ability to run partly-instantiated predicate
+calls, a familiar feature of logic programming languages which provides a form of
+non-determinism, and its more flexible handling of equality. The language also has
+a clean semantics, its underlying logic being (an extension of) Church''s simple theory
+of types. This report is divided into two parts. The first part provides a tutorial
+introduction to Escher. In this part there are many example programs to illustrate
+the various language features. In particular, these example programs are meant to
+emphasize the significant practical advantages that come from integrating the best
+features of existing functional and logic languages. The second part contains a formal
+definition of the Escher language, including its syntax, semantics, and a description
+of its system modules. To make the report self-contained, an appendix summarizes the
+key aspects of the simple theory of types.}
+}
+@inproceedings{krikler2020fast,
+  title={The FAST-HEP toolset: Using YAML to make tables out of trees},
+  author={Krikler, Benjamin Edward and Davignon, Olivier and Kreczko, Lukasz and Linacre, Jacob},
+  booktitle={EPJ Web of Conferences},
+  volume={245},
+  pages={06016},
+  year={2020},
+  organization={EDP Sciences}
+}
+@article{Sekmen:2020vph,
+    author = "Sekmen, Sezen and Gras, Philippe and Gray, Lindsey and Krikler, Benjamin and Pivarski, Jim and Prosper, Harrison B. and Rizzi, Andrea and Unel, Gokhan and Watts, Gordon",
+    editor = "Mansoulie, Bruno and Marchiori, Giovanni and Salern, Roberto and Bos, Tulika",
+    title = "{Analysis Description Languages for the LHC}",
+    eprint = "2011.01950",
+    archivePrefix = "arXiv",
+    primaryClass = "hep-ph",
+    reportNumber = "FERMILAB-PUB-21-145-SCD",
+    doi = "10.22323/1.382.0065",
+    journal = "PoS",
+    volume = "LHCP2020",
+    pages = "065",
+    year = "2021"
+}
+@article{Unel:2021edl,
+    author = "Unel, G. and Sekmen, S. and Toon, A. M. and Gokturk, B. and Orgen, B. and Paul, A. and Ravel, N. and Setpal, J.",
+    title = "{CutLang V2: towards a unified Analysis Description Language}",
+    eprint = "2101.09031",
+    archivePrefix = "arXiv",
+    primaryClass = "hep-ph",
+    doi = "10.3389/fdata.2021.659986",
+    month = "1",
+    year = "2021"
+}
+@article{Proffitt:2021wfh,
+    author = "Proffitt, Mason and Watts, Gordon",
+    title = "{FuncADL: Functional Analysis Description Language}",
+    eprint = "2103.02432",
+    archivePrefix = "arXiv",
+    primaryClass = "physics.data-an",
+    doi = "10.1051/epjconf/202125103068",
+    journal = "EPJ Web Conf.",
+    volume = "251",
+    pages = "03068",
+    year = "2021"
+}
+@article{Piparo:2019xdy,
+    author = "Piparo, Danilo and Canal, Philippe and Guiraud, Enrico and Valls Pla, Xavier and Ganis, Gerardo and Amadio, Guilherme and Naumann, Axel and Tejedor, Enric",
+    editor = "Forti, A. and Betev, L. and Litmaath, M. and Smirnova, O. and Hristov, P.",
+    title = "{RDataFrame: Easy Parallel ROOT Analysis at 100 Threads}",
+    reportNumber = "FERMILAB-CONF-19-550-SCD",
+    doi = "10.1051/epjconf/201921406029",
+    journal = "EPJ Web Conf.",
+    volume = "214",
+    pages = "06029",
+    year = "2019"
+}
+@article{Smith:2020pxs,
+    author = "Smith, Nicholas and others",
+    editor = "Doglioni, C. and Kim, D. and Stewart, G. A. and Silvestris, L. and Jackson, P. and Kamleh, W.",
+    title = "{Coffea: Columnar Object Framework For Effective Analysis}",
+    eprint = "2008.12712",
+    archivePrefix = "arXiv",
+    primaryClass = "cs.DC",
+    reportNumber = "FERMILAB-CONF-20-494-CMS-SCD",
+    doi = "10.1051/epjconf/202024506012",
+    journal = "EPJ Web Conf.",
+    volume = "245",
+    pages = "06012",
+    year = "2020"
+}
+@misc{root-io-survey,
+  author="Jim Pivarski",
+  title="Survey of columnar file formats and the techniques they use",
+  month="Feb",
+  year="2017",
+  howpublished="\url{https://indico.fnal.gov/event/13665/#9-survey-of-columnar-file-form}",
+}
+@incollection{lentner2019shared,
+  title={Shared Memory High Throughput Computing with Apache Arrow™},
+  author={Lentner, Geoffrey},
+  booktitle={Proceedings of the Practice and Experience in Advanced Research Computing on Rise of the Machines (learning)},
+  pages={1--2},
+  year={2019}
+}
+@incollection{vohra2016apache,
+  title={Apache parquet},
+  author={Vohra, Deepak},
+  booktitle={Practical Hadoop Ecosystem},
+  pages={325--335},
+  year={2016},
+  publisher={Springer}
+}
+@article{Alkin:2021mfo,
+    author = "Alkin, Anton and Eulisse, Giulio and Grosse-Oetringhaus, Jan Fiete and Hristov, Peter and Kabus, Maja",
+    title = "{ALICE Run 3 Analysis Framework}",
+    doi = "10.1051/epjconf/202125103063",
+    journal = "EPJ Web Conf.",
+    volume = "251",
+    pages = "03063",
+    year = "2021"
+}
+@misc{uproot,
+  author="Jim Pivarski",
+  title="Uproot: rapidly moving data from ROOT to Numpy and Pandas",
+  year="2018",
+  howpublished="\url{https://indico.cern.ch/event/686641/#4-uproot-rapidly-moving-data-f}",
+}
+@article{Blomer:2020usr,
+    author = "Blomer, Jakob and Canal, Philippe and Naumann, Axel and Piparo, Danilo",
+    editor = "Doglioni, C. and Kim, D. and Stewart, G. A. and Silvestris, L. and Jackson, P. and Kamleh, W.",
+    title = "{Evolution of the ROOT Tree I/O}",
+    eprint = "2003.07669",
+    archivePrefix = "arXiv",
+    primaryClass = "cs.DB",
+    reportNumber = "FERMILAB-CONF-20-165-SCD",
+    doi = "10.1051/epjconf/202024502030",
+    journal = "EPJ Web Conf.",
+    volume = "245",
+    pages = "02030",
+    year = "2020"
+}
+@article{ROOTTeam:2020jal,
+    author = "Amadio, Guilherme and others",
+    collaboration = "ROOT Team",
+    title = "{Software Challenges For HL-LHC Data Analysis}",
+    eprint = "2004.07675",
+    archivePrefix = "arXiv",
+    primaryClass = "physics.data-an",
+    month = "5",
+    year = "2020"
+}
+@article{Brun:2012cq,
+    author = "Brun, Ren",
+    editor = {Ernst, Michael and D\"ullmann, Dirk and Rind, Ofer and Wong, Tony},
+    title = "{The evolution of software in high energy physics}",
+    doi = "10.1088/1742-6596/396/5/052016",
+    journal = "J. Phys. Conf. Ser.",
+    volume = "396",
+    pages = "052016",
+    year = "2012"
 }
 @article{Chang:2017ske,
     author = "Chang, Jin and Gutsche, Oliver and Mandrichenko, Igor and Pivarski, James",
