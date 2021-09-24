@@ -229,7 +229,7 @@ As described above, we don't expect all of our software needs to be satisfied by
 
 Given the upcoming computational challenges of the HL-LHC and the maturity of data science software today, it would be prudent to adopt data science solutions in category (1), and to contribute back or proselytize HEP-developed solutions in category (2), so that they can be maintained by the larger community as well. In category (2), a project like Cling has the LLVM community to receive it, once technical issues are overcome, but a project like Awkward Array or hist would have to convince data scientists beyond HEP that non-tabular data or histogram objects are useful concepts before we can expect collaboration. Better interoperability between HEP tools and data science tools aids sharing in both directions: generic tools become usable in HEP (so that we do not need to maintain them) and HEP-style techniques may become common beyond HEP (so that we do not need to maintain them). In both directions, the key ingredient is interoperability.
 
-\section{Management, risk assessment, and timelines}
+\section{Management, risk assessment, and the Grand Challenges}
 
 The use of data science software in HEP is not centrally managed, but HSF/PyHEP, IRIS-HEP, and major (community) project and package developers such as Scikit-HEP and Coffea have a strong influence on its direction and priorities. IRIS-HEP, in particular, is funding the development of core pieces of the ecosystem.
 
@@ -237,11 +237,20 @@ Both within IRIS-HEP and between projects, development goals are incremental and
 
 Communication through PyHEP Gitter, IRIS-HEP Slack, and issues/pull requests in GitHub is more frequent and a denser network between teams than the conventional HEP style of slide-presentations in weekly meetings. However, the problem of discoverability is as prevalent as ever: software developers have to ``find'' this network to get oriented. It is still the case that physicist-developers build packages in isolation, only to find out that they could have multiplied their effectiveness if they had been plugged into this ecosystem earlier.
 
-Progress is generally measured in terms of physics analysis productivity in current LHC analyses, which is not the same thing as raw computational performance. Given the way that development self-adjusts to present conditions, the risk is that scaling to the HL-LHC will be ignored. For this reason, IRIS-HEP's Analysis Systems group is conducting a full-scale exercise called the Analysis Grand Challenge as an integration test of all components at HL-LHC scales.
+Progress is generally measured in terms of physics analysis productivity in current LHC analyses, which is not the same thing as raw computational performance. Given the way that development self-adjusts to present conditions, the risk is that scaling to the HL-LHC will be ignored. For this reason, IRIS-HEP is conducting an institute-wide ``Grand Challenge'' as an integration test of all the components~\cite{grand_challenge}.
 
-Development of ecosystem components is continuous, but the Analysis Grand Challenge will be conducted this year (2021--2022), leaving considerable time for adjustment before the start-up of the HL-LHC. Furthermore, much of this ecosystem is already being exploited by hundreds of physicists, in real conditions of LHC analysis, and experience from this ``exercise'' will be crucial input toward future developments.
+The data processing component of this challenge, conducted with the U.S. LHC Operations program, the ATLAS and CMS collaborations, and the WLCG, is a series of global processing tasks in 2021, 2023, 2025, and 2027 that slowly scale up to the throughput and features expected of HL-LHC data processing: an exabyte of raw data in 100~days.
 
-{\bf FIXME:} need more details about the Analysis Grand Challenge. Also, that would make it more conclusion-y. The previous section makes a nice conclusion, which we could get for free if we just drop this ``Management, risk assessment, and timelines'' section.
+The analysis component of this challenge stresses both computational performance and tool integration. Analysis systems start with the output of the data processing step, about 200~TB of analysis-ready data per physics study, with many studies requesting overlapping subsets of the data. Perhaps more importantly, an analysis workflow integrates many of the services and software libraries described above, so the Analysis Grand Challenge will focus on interoperability. The Challenge will reproduce a standard analysis, such as the $H \to 4\ell$ discovery, with all corrections and systematics studies performed by the Python/data science toolchain, presented in Figure~\ref{fig:cabinetry-vertical-slice}. In addition, the Analysis Grand Challenge will include autodifferentiation as a test of novel techniques.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/cabinetry-vertical-slice.png}
+
+\caption{Analysis system workflow: how the software libraries fit into an ``end user'' analysis, from analysis-ready data to final results and reinterpretations. \label{fig:cabinetry-vertical-slice}}
+\end{figure}
+
+By testing all of the services and software libraries in a combined workflow, the IRIS-HEP Grand Challenges demonstrate that no major capabilities are missing, verify that each component can efficiently hand off data to the next, and determine if they can, indeed, perform at HL-LHC scales. Starting these challenges now ensures that the developer community has enough time to respond to any issues that it reveals.
 
 \section{Bibliography}
 
