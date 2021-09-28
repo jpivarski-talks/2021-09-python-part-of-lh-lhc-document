@@ -1,8 +1,13 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[12pt,a4paper]{article}
+\usepackage{jheppub}
 \usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[titletoc]{appendix}
+\usepackage{xspace}
 \usepackage{hyperref}
-\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[style=numeric-comp,sorting=none]{biblatex}
+\addbibresource{bibfile.bib}
 
 \begin{document}
 
@@ -48,7 +53,7 @@ The big picture of developments in data science software, HEP software, and the 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{fig/hllhc-python-timeline-paper.pdf}
+\includegraphics[width=0.95\linewidth]{fig/hllhc-python-timeline-paper.pdf}
 
 \caption{Timeline of developments in scientific Python (dashed green outline), big data (orange), GPUs and machine learning (magenta), and data science in HEP (blue), overlaid on the LHC, HL-LHC, HSF, DIANA/HEP, and IRIS-HEP timelines. \label{fig:hllhc-python-timeline-paper}}
 \end{figure}
@@ -83,14 +88,14 @@ A pre-workshop survey sent to the \href{https://indico.cern.ch/e/PyHEP2020}{PyHE
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{fig/pyhep2020-survey-paper.pdf}
+\mbox{\hspace{-0.15\linewidth}\includegraphics[width=1.15\linewidth]{fig/pyhep2020-survey-paper.pdf}}
 
 \caption{Survey results from 406 registrants of PyHEP 2020~\cite{PyHEP2020} illustrating the mix of C++ and Python (and no other language) among physicists, and the use of Python primarily for analysis. \label{fig:pyhep2020-survey-paper}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{fig/lhlhc-familiarity-with-packages-paper.pdf}
+\includegraphics[width=\linewidth]{fig/lhlhc-familiarity-with-packages-paper.pdf}
 
 \caption{Familiarity and usage of data science tools (top) and HEP data analysis tools (bottom) from the same survey as Figure~\ref{fig:pyhep2020-survey-paper}. \label{fig:lhlhc-familiarity-with-packages-paper}}
 \end{figure}
@@ -115,12 +120,12 @@ This ``mixed future'' is a safe bet because it is how most other scientific fiel
 
 File formats tend to be conservative. The following widely used formats for the sciences are decades old:
 
-\begin{itemize}
-\item generic: JSON (2002), XML (1998), XLS (1997), HDF5 (1992), NetCDF (1990), CSV (1972)
-\item Astronomy: VOTable (2002), FITS (1981)
-\item Geospatial: GeoTIFF (1994), Shapefiles (1990)
-\item Genetics: FASTA (1985)
-\item Chemistry: ChemML (1999), GROMACS (1991), CHARMM (1983), PDB (1976)
+\begin{itemize}\setlength{\itemsep}{-0.15 cm}
+\item generic: JSON~(2002), XML~(1998), XLS~(1997), HDF5~(1992), NetCDF~(1990), CSV~(1972)
+\item Astronomy: VOTable~(2002), FITS~(1981)
+\item Geospatial: GeoTIFF~(1994), Shapefiles~(1990)
+\item Genetics: FASTA~(1985)
+\item Chemistry: ChemML~(1999), GROMACS~(1991), CHARMM~(1983), PDB~(1976)
 \end{itemize}
 %
 We can therefore expect ROOT files to continue to play a major role in HEP. However, this is only half of the story: interoperability is a key value in the culture of data science software development. With sufficient interoperability, data file formats do not dictate which tools can be used to analyze them. Astronomers, for instance, routinely copy FITS telescope images and VOTable legacy data into machine learning libraries on the fly with NumPy or through on-disk HDF5 files. Geneticists and climate scientists are mixing their old software stacks with xarray (2014), a Pandas-like library for larger-than-memory $N$-dimensional tensors, and Zarr (2015), an array format described as ``cloud-ready NetCDF.''
@@ -139,7 +144,7 @@ The Striped project~\cite{Chang:2017ske,Gutsche:2020kmd} implemented a successfu
 
 There are a few projects that are picking up where Striped left off:
 
-\begin{itemize}
+\begin{itemize}\setlength{\itemsep}{0 cm}
 \item{ServiceX~\cite{Galewsky:2020xig} provides the ability to fill databases directly with derived variables.}
 \item{SkyhookDM~\cite{lefevre:login20} is pursuing database storage for analysis data.}
 \item{Coffea's columnservice~\cite{columnservice} provides a demonstration of useful configurations and interfaces based on analyst feedback.}
@@ -249,7 +254,7 @@ The analysis component of this challenge stresses both computational performance
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{fig/cabinetry-vertical-slice.png}
+\includegraphics[width=\linewidth]{fig/cabinetry-vertical-slice.png}
 
 \caption{Analysis system workflow for IRIS-HEP's Analysis Grand Challenge: how the software libraries fit into an ``end user'' analysis, from analysis-ready data to final results and reinterpretations. \label{fig:cabinetry-vertical-slice}}
 \end{figure}
@@ -258,7 +263,6 @@ By testing all of the services and software libraries in a combined workflow, th
 
 \section{Bibliography}
 
-\bibliography{bibfile}{}
-\bibliographystyle{unsrt}
+\printbibliography
 
 \end{document}
