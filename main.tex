@@ -11,8 +11,23 @@
 
 \begin{document}
 
-\title{Data Science Tools for Analysis}
-\author{HSF PyHEP WG Input to the HL-LHC Computing Review Stage 2}
+\title{HL-LHC Computing Review Stage 2, \\ Common Software Projects:\\
+Data Science Tools for Analysis}
+\author[1]{Jim Pivarski~(editor),}
+\author[2]{Eduardo Rodrigues~(editor),}
+\author[3]{Kevin Pedro~(editor),}
+\author[4]{Oksana Shadura,}
+\author[5]{Ben Krikler,}
+\author[6]{Graeme A. Stewart}
+\author{\\for the HSF PyHEP Working Group}
+
+\affiliation[1]{Princeton University, Princeton NJ, USA}
+\affiliation[2]{Oliver Lodge Laboratory, University of Liverpool, Liverpool, UK}
+\affiliation[3]{Fermilab, Batavia IL, USA}
+\affiliation[4]{University of Nebraska-Lincoln, Lincoln NE, USA}
+\affiliation[5]{University of Bristol, Bristol, UK}
+\affiliation[6]{CERN, Geneva, Switzerland}
+
 \maketitle
 
 \section{Description and relevance for the HL-LHC}
@@ -205,7 +220,7 @@ Software that performs fits and reveals statistical limits or measurements with 
 
 As such, there are a lot of small, focused packages in this area. The most foundational is iminuit~\cite{iminuit} (2015), following the now-deprecated pyminuit (2008), which provides Minuit~\cite{James:1975dr} minimization in Python so that users can build binned and unbinned fits from the ground up. Scikit-HEP's iminuit is a good example of the ``mixed future,'' in which a decades-old algorithm developed in HEP (Minuit, 1975) is fully integrated into NumPy, SciPy, Jupyter, Numba, JAX, and Matplotlib. iminuit has a larger userbase among astronomers than physicists because astronomers adopted Python earlier than HEP. Packages like probfit (2012, now deprecated) and zfit~\cite{Eschle:2020ghu} (2019) provide high-level curve-fitting interfaces, with zfit leveraging TensorFlow and using a variety of minimizers as backends: iminuit, nlopt, TensorFlow, and SciPy. Whereas Minuit focuses on detailed few-parameter fits (fewer than 100), optimizers for deep learning like TensorFlow can optimize thousands of parameters at once, but provide less detail about the shape of the minimum for uncertainty bands.
 
-For template binned fits, Scikit-HEP's pyhf (2018) is a major project, also with a variety of backends: NumPy, TensorFlow, PyTorch, and JAX. Two of these, TensorFlow (through an explicit DAG) and JAX (through autodifferentiation) differentiate the objective function for faster convergence, and all but NumPy can take advantage of GPUs. pyhf is implemented in Python without ROOT dependencies, but is typically much faster than ROOT-based template fitters, such as HistFitter, because it is leveraging exact derivatives and hardware acceleration through its backends. For example, one fully optimized model took 10~hours to compute in HistFitter and 30~minutes in pyhf, and another took 20~minutes in HistFitter and 10~seconds in pyhf. pyhf is (so far) cited in 19~publications and is regularly used to derive limits in ATLAS, 7~of which are published as full likelihood functions~\cite{ATL-PHYS-PUB-2019-029} in the HEPData repository, which allows the experimental result to be applied to new theoretical models in the future.
+For template binned fits, Scikit-HEP's pyhf (2018) is a major project, also with a variety of backends: NumPy, TensorFlow, PyTorch, and JAX. Two of these, TensorFlow (through an explicit DAG) and JAX (through autodifferentiation) differentiate the objective function for faster convergence, and all but NumPy can take advantage of GPUs. pyhf is implemented in Python without ROOT dependencies, but is typically much faster than ROOT-based template fitters, such as HistFitter, because it is leveraging exact derivatives and hardware acceleration through its backends. For example, one fully optimized model took 10~hours to compute in HistFitter and 30~minutes in pyhf, and another took 20~minutes in HistFitter and 10~seconds in pyhf. pyhf is (so far) cited in 19~publications and is regularly used to derive limits in ATLAS, 18~of which are published as full likelihood functions~\cite{ATL-PHYS-PUB-2019-029} in the HEPData repository, which allows the experimental result to be applied to new theoretical models in the future.
 
 Statistical inference is such a broad field that there is a long tail of specialized packages. To get a sense of the variety, here are a few from PyPI:
 
